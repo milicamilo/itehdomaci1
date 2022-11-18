@@ -51,7 +51,10 @@
 
 
 
+        <div id="products" name="products">
+                <?php include "productCards.php"; ?>
 
+        </div>
 
 
 
