@@ -14,7 +14,7 @@ if (isset($_POST['nameCE'])) {
 
    $product = new Product($idP,$name,$description,$cat,$price,$filename);
    $status = Product::updateProduct($product,$conn);
-   echo  $status;
+
     if($status){
                     
         echo 'Success';
