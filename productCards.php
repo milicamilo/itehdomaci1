@@ -3,7 +3,18 @@
     include 'model/Product.php';
    
    
-     $sviSlatkisi = Product::getAllProducts($conn);
+    if (isset($_POST['cena'])) {
+    
+        $sortiraj = $_POST['cena'];
+        if($sortiraj=='ASC'){
+            $sviSlatkisi = Product::getAllProductsSortedByPriceASC($conn);
+        }else if($sortiraj=='DESC'){
+            $sviSlatkisi = Product::getAllProductsSortedByPriceDESC($conn);
+        }
+    }else{
+        $sviSlatkisi = Product::getAllProducts($conn);
+    }
+    
  
     
 
@@ -53,7 +64,32 @@
 
 
 
+    <script>
 
+
+
+        
+        function deleteProduct(deleteid){
+
+
+        request = $.ajax({  
+            url: 'handler/delete.php',  
+            type: 'post', 
+            data: {deleteid:deleteid},
+
+
+            success: function(data, status){
+                location.reload(true);
+                alert("Uspesno obrisano!");
+            }
+
+
+        });
+
+
+
+    }
+    </script>
  
 
 

@@ -35,6 +35,13 @@
            
             return $conn->query($upit); 
         }
+
+
+        public static function deleteProduct($id, $conn){
+            $upit = " delete from  product where id=$id";
+           
+            return $conn->query($upit); 
+        }
     }
 
 
