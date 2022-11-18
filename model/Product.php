@@ -49,6 +49,18 @@
             return $conn->query($upit); 
     
         }
+        public static function updateProduct($p,$conn){
+    
+            $upit = "update product set price=$p->price,name='$p->name',description='$p->description',image='$p->image',category=$p->category where id=$p->id ";
+           
+            return $conn->query($upit); 
+    
+        }
+        public static function getProduct($id,$conn){
+            $upit = "select * from product p inner join category c on p.category=c.idCat where id=$id";
+           
+            return $conn->query($upit); 
+        }
     }
 
 

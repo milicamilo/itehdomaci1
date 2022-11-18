@@ -43,12 +43,18 @@
                 </strong></i>
             </a> 
             <div>
+            <a class="nav-link" href="home.php" style="color:black;text-decoration: none;float:left"><strong>Pocetna</strong> </a>
                 <a class="nav-link" href="dodajSlatkis.php" style="color:black;text-decoration: none;float:left"><strong>Dodaj novi slatkis</strong> </a>
                 
                 <a   class="nav-link" href="logout.php" style="color:black;text-decoration: none;float:right">Odjava</a>
             </div>
         
         </nav>
+
+
+        
+
+        <div id="products" name="products">
         <div style="margin-top:5%"> 
             <label for="cena" style="margin-left:20%;font-size:16px">Sortiranje: </label>
             <select name="cena" id="cena" onchange="sortirajPoCeni()" style="background-color:#fbc2eb;color:black;font-size:16px">
@@ -57,12 +63,14 @@
                     <option value="DESC">Price  descending </option>
             </select>
 
-
-        </div>
-
+            <div class="input-group" style="float:right;padding-left:65%;padding-right:15%;"> 
+            
+            <input type="search" id="form1" class="form-control"  style="float:right" onkeyup="pretraga()" placeholder="Search by name..."/>
+             
         
-
-        <div id="products" name="products">
+            <button type="button" class="btn btn-custom" style="background-color:#fbc2eb; color:black" ;><i class="fas fa-search"></i> </button>
+        </div>
+        </div>
                 <?php include "productCards.php"; ?>
 
         </div>
@@ -96,6 +104,42 @@
 
 
             }
+
+
+
+            function updateCandy(updateid) {
+               
+                $("#products").html("");
+                $.post("updateProduct.php", { updateid: updateid }, function (data) {
+                    $("#products").html(data);
+                });
+              
+
+            }
+
+            function pretraga(){
+                var input, radios, radio_filter, text_filter, td0, i, divList;
+
+                input = document.getElementById("form1");
+                text_filter = input.value.toUpperCase();
+                divList = $(".card");
+                console.log(divList);
+
+                for (i = 0; i < divList.length; i++) {
+                    console.log(divList[i]);
+                    td0 = divList[i].getElementsByTagName("h4")[0].innerHTML;
+                    console.log(td0);
+                    if (td0) {
+                    if (td0.toUpperCase().indexOf(text_filter) > -1) {
+                        divList[i].style.display = "";
+                    } else {
+                        divList[i].style.display = "none";
+                    }
+                    } 
+                }
+            }
+ 
+
     </script>
 </body>
 </html>
