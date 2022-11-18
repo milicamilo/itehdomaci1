@@ -48,8 +48,18 @@
             </div>
         
         </nav>
+        <div style="margin-top:5%"> 
+            <label for="cena" style="margin-left:20%;font-size:16px">Sortiranje: </label>
+            <select name="cena" id="cena" onchange="sortirajPoCeni()" style="background-color:#fbc2eb;color:black;font-size:16px">
+                    <option  >Price  </option>
+                    <option value="ASC">Price ascending  </option>
+                    <option value="DESC">Price  descending </option>
+            </select>
 
 
+        </div>
+
+        
 
         <div id="products" name="products">
                 <?php include "productCards.php"; ?>
@@ -65,6 +75,26 @@
      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   <script src="js/main.js"></script>
+    <script>
+
+
+            function sortirajPoCeni() {
+                var sortiraj = $("#cena").val();
+                console.log(sortiraj);
+            //   var kategorijesel = $("#kategorija").val();
+
+                $("#products").html("");
+                $.post("productCards.php", { cena: sortiraj }, function (data) {
+                    $("#products").html(data);
+                });
+                $('html, body').animate({
+                    scrollTop: $("#products").offset().top
+                }, 2000);
+
+            
+
+
+            }
+    </script>
 </body>
 </html>

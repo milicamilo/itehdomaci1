@@ -25,7 +25,16 @@
             return $conn->query($upit); 
         }
 
-
+        public static function getAllProductsSortedByPriceDESC($conn){
+            $upit = " select * from product p inner join category c on p.category=c.idCat order by p.price desc";
+           
+            return $conn->query($upit); 
+        }
+        public static function getAllProductsSortedByPriceASC($conn){
+            $upit = " select * from product p inner join category c on p.category=c.idCat order by p.price asc";
+           
+            return $conn->query($upit); 
+        }
     }
 
 
