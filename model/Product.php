@@ -42,6 +42,13 @@
            
             return $conn->query($upit); 
         }
+
+        public static function addProduct($p, $conn){
+            $upit = "insert into product (name,description,image,price,category) values ('$p->name','$p->description','$p->image',$p->price,$p->category)";
+             
+            return $conn->query($upit); 
+    
+        }
     }
 
 

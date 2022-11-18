@@ -43,6 +43,7 @@
                 </strong></i>
             </a> 
             <div>
+                <a class="nav-link" href="dodajSlatkis.php" style="color:black;text-decoration: none;float:left"><strong>Dodaj novi slatkis</strong> </a>
                 
                 <a   class="nav-link" href="logout.php" style="color:black;text-decoration: none;float:right">Odjava</a>
             </div>
